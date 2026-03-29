@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+  --font-hand: "Caveat", cursive;
+
+  --color-pastel-pink: #e1bee7;
+  --color-pastel-blue: #e3f2fd;
+  --color-pastel-purple: #f3e5f5;
+  --color-pastel-green: #e8f5e9;
+  --color-pastel-yellow: #fff9c4;
+  
+  --color-accent-pink: #9575cd;
+  --color-accent-blue: #4fc3f7;
+  --color-accent-purple: #b39ddb;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#fafafa] text-[#1a1a1a] selection:bg-accent-pink selection:text-white transition-colors duration-300;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+@layer utilities {
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+  }
+
+  .pastel-gradient-1 {
+    background: linear-gradient(135deg, var(--color-pastel-pink) 0%, var(--color-pastel-blue) 100%);
+  }
+
+  .pastel-gradient-2 {
+    background: linear-gradient(135deg, var(--color-pastel-purple) 0%, var(--color-pastel-yellow) 100%);
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
+  }
+
+  .glass {
+    @apply bg-white/20 backdrop-blur-xl border border-white/30 shadow-xl;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  .blob {
+    @apply absolute rounded-full blur-[100px] opacity-40 mix-blend-multiply animate-pulse;
+    background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 100%);
+  }
+}

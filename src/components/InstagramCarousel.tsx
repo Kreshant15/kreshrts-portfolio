@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 
 const instagramPosters = [
-  { id: 1, url: "src/assets/images/insta/Rebirth.webp" },
-  { id: 2, url: "src/assets/images/insta/Ahinsa w effects.webp" },
-  { id: 3, url: "src/assets/images/insta/Digital Skin.webp" },
-  { id: 4, url: "src/assets/images/insta/Antaryatra w effects.webp" },
-  { id: 5, url: "src/assets/images/insta/ember.webp" },
-  { id: 6, url: "src/assets/images/insta/krodh w effects.webp" },
-  { id: 7, url: "src/assets/images/insta/greed main.webp" },
-  { id: 8, url: "src/assets/images/insta/Lo-Fi utopia.webp" },
+  { id: 1, url: "public/images/insta/Rebirth.webp" },
+  { id: 2, url: "public/images/insta/Ahinsa w effects.webp" },
+  { id: 3, url: "public/images/insta/Digital Skin.webp" },
+  { id: 4, url: "public/images/insta/Antaryatra w effects.webp" },
+  { id: 5, url: "public/images/insta/ember.webp" },
+  { id: 6, url: "public/images/insta/krodh w effects.webp" },
+  { id: 7, url: "public/images/insta/greed main.webp" },
+  { id: 8, url: "public/images/insta/Lo-Fi utopia.webp" },
 ];
 
 export const InstagramCarousel = () => {

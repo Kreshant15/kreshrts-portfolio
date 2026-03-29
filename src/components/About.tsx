@@ -29,7 +29,7 @@ export const About = () => {
             <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto lg:mx-0">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-black relative z-10">
                 <img
-                  src="public/images/me/kresh.webp"
+                  src="/images/me/kresh.webp"
                   alt="Kreshant Kumar"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

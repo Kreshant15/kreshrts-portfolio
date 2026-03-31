@@ -22,31 +22,36 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle scroll lock with force reset
+  // Handle scroll lock with proper position preservation
   useEffect(() => {
+    let scrollPosition = 0;
+    
     if (isOpen) {
-      // Force disable all scrolling
+      // Save current scroll position
+      scrollPosition = window.scrollY;
+      
+      // Lock scroll and preserve position
       document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.top = `-${scrollPosition}px`;
       document.body.style.width = '100%';
     } else {
-      // Restore scrolling and position
-      const scrollY = document.body.style.top;
+      // Unlock scroll and restore position
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      document.body.style.width = '';
+      
+      // Restore scroll position
+      window.scrollTo(0, scrollPosition);
     }
     
+    // Cleanup function
     return () => {
-      // Cleanup on unmount
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      document.body.style.width = '';
     };
   }, [isOpen]);
 
@@ -71,7 +76,7 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Backdrop - prevents interaction with background */}
+      {/* Backdrop */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-[55] md:hidden"
@@ -141,7 +146,7 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu - Portal-style approach */}
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="fixed inset-0 z-[60] md:hidden">
           <div className="absolute inset-0 bg-white">

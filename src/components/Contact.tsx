@@ -1,21 +1,48 @@
+import React from "react";
 import { motion } from "motion/react";
-import { Send, Mail, Instagram, Linkedin, X, Dribbble } from "lucide-react";
+import { Send, Mail } from "lucide-react";
+import { 
+  FaInstagram,
+  FaLinkedin,
+  FaDribbble,
+  FaTwitter 
+} from 'react-icons/fa';
+import { FaBehance } from 'react-icons/fa';
+
+// Type for our social link objects
+interface SocialLink {
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  href: string;
+  color: string;
+}
 
 export const Contact = () => {
-  const socialLinks = [
-    { Icon: Instagram, href: "https://instagram.com/kreshrts", color: "hover:bg-[#E4405F] hover:border-[#E4405F]" },
-    { Icon: Linkedin, href: "https://www.linkedin.com/in/kreshant-kumar", color: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" },
-    { Icon: Dribbble, href: "https://dribbble.com/Kresh_15", color: "hover:bg-[#EA4C89] hover:border-[#EA4C89]" },
+  const socialLinks: SocialLink[] = [
     { 
-      Icon: ({ className }: { className?: string }) => (
-        <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-          <path d="M22 7h-7v-2h7v2zm1.726 10c-.584 2.236-2.597 4-4.974 4-2.828 0-5.125-2.297-5.125-5.125s2.297-5.125 5.125-5.125c2.455 0 4.495 1.718 4.998 4h-2.235c-.45-1.066-1.516-1.8-2.763-1.8-1.668 0-3.025 1.357-3.025 3.025s1.357 3.025 3.025 3.025c1.159 0 2.151-.652 2.66-1.6h2.309zm-12.059-3c0 .856-.391 1.579-1.062 2.037.712.463 1.162 1.235 1.162 2.132 0 1.484-1.207 2.691-2.691 2.691h-5.076v-14h4.751c1.381 0 2.5 1.119 2.5 2.5 0 .851-.425 1.588-1.076 2.04.814.47 1.492 1.323 1.492 2.6zm-7.001-4.5h2.385c.552 0 1-.448 1-1s-.448-1-1-1h-2.385v2zm0 7.5h2.71c.552 0 1-.448 1-1s-.448-1-1-1h-2.71v2z"/>
-        </svg>
-      ), 
+      Icon: FaInstagram, 
+      href: "https://instagram.com/kreshrts", 
+      color: "hover:bg-[#E4405F] hover:border-[#E4405F]" 
+    },
+    { 
+      Icon: FaLinkedin, 
+      href: "https://www.linkedin.com/in/kreshant-kumar", 
+      color: "hover:bg-[#0A66C2] hover:border-[#0A66C2]" 
+    },
+    { 
+      Icon: FaDribbble, 
+      href: "https://dribbble.com/Kresh_15", 
+      color: "hover:bg-[#EA4C89] hover:border-[#EA4C89]" 
+    },
+    { 
+      Icon: FaBehance, 
       href: "https://www.behance.net/kreshantkumar", 
       color: "hover:bg-[#053eff] hover:border-[#053eff]" 
     },
-    { Icon: X, href: "https://x.com/kreshrts", color: "hover:bg-black hover:border-black" },
+    { 
+      Icon: FaTwitter, 
+      href: "https://x.com/kreshrts", 
+      color: "hover:bg-black hover:border-black" 
+    },
   ];
 
   return (

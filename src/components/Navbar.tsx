@@ -23,15 +23,18 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle scroll lock
+  // Handle scroll lock and background
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -116,9 +119,20 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Simple Fullscreen Overlay */}
+      {/* Mobile Menu - Fixed Position */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-[60] md:hidden">
+        <div 
+          className="fixed inset-0 bg-white z-[60] md:hidden"
+          style={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'white',
+            zIndex: 60
+          }}
+        >
           <div className="flex flex-col h-full pt-20 pb-10">
             {/* Header */}
             <div className="px-6 flex justify-between items-center border-b border-gray-100 pb-6">
@@ -133,7 +147,7 @@ export const Navbar = () => {
             </div>
 
             {/* Navigation Links */}
-            <div className="flex-1 flex flex-col justify-center px-6 py-12">
+            <div className="flex-1 flex flex-col justify-center px-6 py-12 overflow-y-auto">
               <div className="space-y-8">
                 {navLinks.map((link) => (
                   <div key={link.name} className="text-center">

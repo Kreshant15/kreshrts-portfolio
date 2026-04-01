@@ -4,12 +4,11 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, Sparkles } from "lucide-react";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll fade
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -20,69 +19,85 @@ export const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 py-32"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#f5f1eb]"
     >
-      {/* 🌌 BACKGROUND */}
+      {/* 🌌 BACKGROUND BLOBS */}
       <div className="absolute inset-0 z-0">
 
-        {/* Main gradient blob */}
         <motion.div
           className="absolute top-1/3 left-1/2 -translate-x-1/2
-          w-[800px] h-[800px]
-          bg-gradient-to-r from-purple-400/50 to-pink-300/50
-          blur-[160px] opacity-80 rounded-full"
-        />
-
-        {/* Secondary blob */}
-        <motion.div
-          className="absolute bottom-0 right-1/4
-          w-[600px] h-[600px]
-          bg-gradient-to-r from-blue-300/40 to-purple-300/40
+          w-[700px] h-[700px]
+          bg-gradient-to-r from-purple-400/30 to-pink-300/30
           blur-[140px] opacity-70 rounded-full"
         />
 
-        {/* ✨ FULL GLASS LAYER */}
-        <div className="
-          absolute inset-0
-          backdrop-blur-[80px]
-          bg-white/30
-        " />
+        <motion.div
+          className="absolute bottom-0 left-1/4
+          w-[500px] h-[500px]
+          bg-gradient-to-r from-blue-300/30 to-purple-300/30
+          blur-[120px] opacity-60 rounded-full"
+        />
 
         {/* Grain */}
-        <div className="bg-grain absolute inset-0 pointer-events-none opacity-70" />
-
-        {/* 🌊 Bottom fade (IMPORTANT FIX) */}
-        <div className="
-          absolute bottom-0 left-0 w-full h-40
-          bg-gradient-to-b from-transparent to-[#f5f1eb]
-        " />
+        <div className="bg-grain absolute inset-0 pointer-events-none opacity-60" />
       </div>
+
+      {/* ✨ FLOATING STICKERS */}
+      <motion.div
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 4, repeat: Infinity }}
+        className="absolute left-10 top-1/3 text-purple-400 text-3xl opacity-60"
+      >
+        ✦
+      </motion.div>
+
+      <motion.div
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 5, repeat: Infinity }}
+        className="absolute right-16 bottom-1/3 text-pink-400 text-2xl opacity-60"
+      >
+        ◎
+      </motion.div>
 
       {/* ✨ CONTENT */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+        className="relative z-10 max-w-6xl mx-auto px-6 text-center"
       >
         {/* Availability */}
-        <div className="inline-block mb-6 px-5 py-2 rounded-full
-        bg-white/40 backdrop-blur-md border border-white/30
+        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full
+        bg-white/60 backdrop-blur-md border border-black/10
         text-xs uppercase tracking-widest font-mono">
+          <Sparkles className="w-4 h-4 text-purple-500" />
           Available for Freelance
         </div>
 
-        {/* NAME */}
-        <h1 className="font-display font-black leading-[0.9] tracking-tight text-4xl sm:text-6xl md:text-7xl">
-          <span className="block text-black">KRESHANT</span>
-          <span
-            className="block text-transparent"
-            style={{ WebkitTextStroke: "2px #8A2BE2" }}
+        {/* 🔥 NAME */}
+        <h1 className="font-display font-black leading-[0.85] tracking-tight text-[clamp(3rem,10vw,7rem)]">
+          
+          {/* KRESHANT */}
+          <motion.span
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="block text-black"
+          >
+            KRESHANT
+          </motion.span>
+
+          {/* KUMAR */}
+          <motion.span
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="block text-purple-500 font-outline"
           >
             KUMAR
-          </span>
+          </motion.span>
         </h1>
 
         {/* ROLE */}
-        <p className="mt-6 text-sm sm:text-lg tracking-[0.35em] uppercase text-purple-500 font-semibold">
+        <p className="mt-6 text-sm sm:text-lg tracking-[0.4em] uppercase text-purple-500 font-semibold">
           Graphic Designer
         </p>
 
@@ -92,30 +107,32 @@ export const Hero = () => {
           My work turns ideas into experiences — not just visuals.
         </p>
 
-        {/* 🚀 CTA */}
+        {/* 🚀 CTA BUTTONS */}
         <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
 
-          {/* PRIMARY (Anchor button) */}
-          <a
-            href="#projects"
-            className="group px-8 py-4 rounded-full
-            bg-black text-white font-semibold
-            flex items-center gap-2
-            transition-all duration-300 hover:bg-black/80 hover:scale-105"
-          >
-            View My Work
-            <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition" />
-          </a>
-
-          {/* SECONDARY (Glass) */}
+          {/* PRIMARY — Uiverse style */}
           <a
             href="#contact"
-            className="px-8 py-4 rounded-full
-            bg-white/20 backdrop-blur-md border border-white/30
-            text-black font-semibold
-            transition-all duration-300 hover:bg-white/30 hover:scale-105"
+            className="group relative px-8 py-4 rounded-full bg-black text-white font-semibold overflow-hidden"
           >
-            Let’s Talk
+            {/* Shine */}
+            <span className="absolute left-[-100%] top-0 w-full h-full
+            bg-gradient-to-r from-transparent via-white/40 to-transparent
+            group-hover:left-[100%] transition-all duration-700" />
+
+            <span className="relative flex items-center gap-2">
+              Let’s Work Together
+              <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition" />
+            </span>
+          </a>
+
+          {/* SECONDARY */}
+          <a
+            href="#projects"
+            className="px-8 py-4 rounded-full border border-black/20 font-semibold
+            transition-all duration-300 hover:bg-black hover:text-white"
+          >
+            View Projects
           </a>
         </div>
       </motion.div>

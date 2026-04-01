@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { 
   Menu, 
   X as CloseIcon, 
@@ -15,6 +15,9 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  // ✅ FIX: persistent scroll position
+  const scrollPosition = useRef(0);
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -22,36 +25,33 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle scroll lock with proper position preservation
+  // ✅ FIXED scroll lock logic
   useEffect(() => {
-    let scrollPosition = 0;
-    
     if (isOpen) {
       // Save current scroll position
-      scrollPosition = window.scrollY;
-      
-      // Lock scroll and preserve position
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.width = '100%';
+      scrollPosition.current = window.scrollY;
+
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPosition.current}px`;
+      document.body.style.width = "100%";
     } else {
-      // Unlock scroll and restore position
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      
+      // Unlock scroll
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+
       // Restore scroll position
-      window.scrollTo(0, scrollPosition);
+      window.scrollTo(0, scrollPosition.current);
     }
-    
-    // Cleanup function
+
     return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
     };
   }, [isOpen]);
 
@@ -115,7 +115,7 @@ export const Navbar = () => {
                 )}
               </div>
             ))}
-            
+
             <div className="flex items-center gap-4 ml-4 border-l pl-8 border-black/10">
               {socialIcons.map(({ Icon, href, label }, i) => (
                 <a 

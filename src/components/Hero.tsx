@@ -58,31 +58,36 @@ export const Hero = () => {
     }
     
     let index = 0;
-    const timer = setInterval(() => {
-      setDisplayText(fullText.slice(0, index));
-      index++;
-      if (index > fullText.length) {
-        clearInterval(timer);
-        // Add blinking cursor
+    const speeds = [80, 100, 120, 90, 110]; // Variable typing speeds
+    
+    const type = () => {
+      if (index <= fullText.length) {
+        setDisplayText(fullText.slice(0, index));
+        index++;
+        const speed = speeds[Math.floor(Math.random() * speeds.length)];
+        setTimeout(type, speed);
+      } else {
+        // Add realistic pause before cursor
         setTimeout(() => {
           setDisplayText(prev => prev + '|');
-        }, 500);
+        }, 1000);
       }
-    }, 100);
+    };
     
-    return () => clearInterval(timer);
+    const timer = setTimeout(type, 500);
+    return () => clearTimeout(timer);
   }, [fullText, prefersReducedMotion]);
 
   // Loading state for resume download
   const [isDownloading, setIsDownloading] = useState(false);
   
-const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  setIsDownloading(true);
-  // Reset after 3 seconds
-  setTimeout(() => setIsDownloading(false), 3000);
-};
+  const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsDownloading(true);
+    // Reset after 3 seconds
+    setTimeout(() => setIsDownloading(false), 3000);
+  };
 
-return (
+  return (
     <section 
       ref={containerRef} 
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
@@ -94,39 +99,35 @@ return (
         <p>Creative graphic designer specializing in bold, concept-driven visuals that blend culture, emotion, and digital aesthetics.</p>
       </div>
 
-      {/* Background Elements */}
+      {/* Glass Morphism Background Elements */}
       <div className="absolute inset-0 z-0">
+        {/* Main glass card behind content */}
         <motion.div 
-          style={{ y: y1, x: parallaxX1 }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-pastel-pink to-accent-purple rounded-full blur-3xl opacity-40"
-          animate={prefersReducedMotion ? {} : { 
-            scale: [1, 1.1, 1],
-            opacity: [0.4, 0.6, 0.4]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -50]) }}
+          className="absolute inset-x-0 top-1/3 mx-auto w-[90%] max-w-3xl h-48 bg-white/20 backdrop-blur-2xl border border-white/30 rounded-3xl shadow-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          transition={{ duration: 1, delay: 0.5 }}
           role="presentation"
           aria-hidden="true"
         />
+        
+        {/* Subtle floating glass elements */}
         <motion.div 
-          style={{ y: y2, x: parallaxX1 }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pastel-blue to-purple-300 rounded-full blur-3xl opacity-40"
+          style={{ 
+            x: parallaxX1,
+            y: useTransform(scrollYProgress, [0, 1], [0, 100])
+          }}
+          className="absolute top-1/4 left-10 w-32 h-32 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl"
           animate={prefersReducedMotion ? {} : { 
-            scale: [1, 1.05, 1],
-            opacity: [0.4, 0.5, 0.4]
+            rotate: [0, 5, 0],
+            opacity: [0.3, 0.5, 0.3]
           }}
-          transition={{ 
-            duration: 10, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 1
-          }}
+          transition={{ duration: 6, repeat: Infinity }}
           role="presentation"
           aria-hidden="true"
         />
+        
         <div className="bg-grain absolute inset-0 pointer-events-none" />
       </div>
 
@@ -150,15 +151,19 @@ return (
             </span>
           </motion.div>
 
+          {/* Redesigned "Creative!" Element */}
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, type: "spring" }}
-            className="absolute -top-10 -right-10 md:-right-20 rotate-12 hidden sm:block"
+            transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+            className="absolute -top-8 -right-4 sm:-top-12 sm:-right-8 z-20"
           >
-            <span className="font-hand text-4xl md:text-6xl text-accent-pink drop-shadow-sm sr-only sm:not-sr-only">
-              Creative!
-            </span>
+            <div className="relative">
+              <div className="absolute inset-0 bg-white/30 backdrop-blur-sm rounded-full blur-xl"></div>
+              <span className="font-hand text-3xl sm:text-5xl text-accent-pink drop-shadow-lg relative z-10 block transform -rotate-6">
+                Creative!
+              </span>
+            </div>
           </motion.div>
 
           <div className="flex flex-col items-center justify-center mb-6">
@@ -235,105 +240,37 @@ return (
             From glitchy experiments to meaningful visual stories, my work is all about making ideas <em className="not-italic font-semibold">feel</em> something—not just look good.
           </motion.p>
 
+          {/* Restructured CTA Section - Only 2 Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.4 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-6 relative z-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
+            {/* Primary CTA - Filled */}
+            <motion.a
+              href="#projects"
+              className="px-8 py-4 bg-gradient-to-r from-accent-pink to-purple-600 text-white rounded-full font-bold hover:from-purple-600 hover:to-accent-pink transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl text-center min-w-[200px] justify-center"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="relative"
+              aria-label="View portfolio projects"
             >
-              <Link
-                to="/projects"
-                className="group relative inline-block px-10 py-5 bg-black text-white rounded-full font-bold overflow-hidden shadow-lg hover:shadow-xl transition-all"
-                aria-label="View portfolio projects"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  View My Work <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition-transform" aria-hidden="true" />
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent-pink to-purple-500"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                  aria-hidden="true"
-                />
-              </Link>
-            </motion.div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.a
-                href="#contact"
-                className="px-8 py-5 border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-all duration-300 text-black shadow-md hover:shadow-lg text-center"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Contact Kreshant for freelance opportunities"
-              >
-                Let's Talk
-              </motion.a>
+              View My Work
+              <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition-transform" aria-hidden="true" />
+            </motion.a>
 
-              <motion.a
-                href="/doc/Kreshant_Fresher_Designer_CV.pdf"
-                download="Kreshant_Fresher_Designer_CV.pdf"
-                onClick={handleDownload}
-                className="px-8 py-5 bg-gradient-to-r from-accent-pink to-purple-500 text-white rounded-full font-bold hover:from-purple-500 hover:to-accent-pink transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg text-center"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Download Kreshant's resume as PDF"
-              >
-                {isDownloading ? (
-                  <span className="flex items-center gap-2">
-                    <motion.span 
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5"
-                    >
-                      ↻
-                    </motion.span>
-                    Downloading...
-                  </span>
-                ) : (
-                  <>
-                    <Download className="w-5 h-5" aria-hidden="true" />
-                    Download CV
-                  </>
-                )}
-              </motion.a>
-            </div>
+            {/* Secondary CTA - Outlined */}
+            <motion.a
+              href="#contact"
+              className="px-8 py-4 border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-all duration-300 text-black shadow-md hover:shadow-lg text-center min-w-[200px] flex justify-center"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Contact Kreshant for freelance opportunities"
+            >
+              Let's Talk
+            </motion.a>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Floating Doodles */}
-      <motion.div
-        style={{ y: y2, rotate: rotate1, x: parallaxX1 }}
-        animate={prefersReducedMotion ? {} : { 
-          y: [0, -20, 0],
-          rotate: [0, 5, 0]
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/3 left-10 hidden lg:block"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div className="w-16 h-16 border-4 border-accent-blue rounded-xl rotate-12" />
-      </motion.div>
-      
-      <motion.div
-        style={{ y: y1, x: parallaxX1 }}
-        animate={prefersReducedMotion ? {} : { 
-          y: [0, 20, 0], 
-          rotate: [0, -5, 0] 
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 right-10 hidden lg:block"
-        role="presentation"
-        aria-hidden="true"
-      >
-        <div className="w-20 h-20 bg-pastel-yellow rounded-full border-4 border-black" />
       </motion.div>
 
       {/* Accessibility skip link */}

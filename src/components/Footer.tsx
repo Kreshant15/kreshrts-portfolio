@@ -39,7 +39,7 @@ export const Footer = () => {
         </div>
 
         <div className="text-black/80 font-mono text-xs">
-          © {new Date().getFullYear()} — Handcrafted with ✨ by Kreshrts
+          © {new Date().getFullYear()} — Handcrafted with ✨ by Kreshant
         </div>
       </div>
 

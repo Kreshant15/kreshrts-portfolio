@@ -1,13 +1,14 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   motion,
   useScroll,
   useTransform,
 } from "motion/react";
-import { ArrowDownRight, Sparkles } from "lucide-react";
+import { ArrowDownRight, Sparkles, Download } from "lucide-react";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -16,6 +17,12 @@ export const Hero = () => {
 
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
+  const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsDownloading(true);
+    // Reset after 3 seconds
+    setTimeout(() => setIsDownloading(false), 3000);
+  };
+
   return (
     <section
       ref={containerRef}
@@ -23,7 +30,6 @@ export const Hero = () => {
     >
       {/* 🌌 BACKGROUND BLOBS */}
       <div className="absolute inset-0 z-0">
-
         <motion.div
           className="absolute top-1/3 left-1/2 -translate-x-1/2
           w-[700px] h-[700px]
@@ -72,27 +78,62 @@ export const Hero = () => {
           Available for Freelance
         </div>
 
-        {/* 🔥 NAME */}
+        {/* 🔥 NAME with Framer-style animation */}
         <h1 className="font-display font-black leading-[0.85] tracking-tight text-[clamp(3rem,10vw,7rem)]">
-          
           {/* KRESHANT */}
           <motion.span
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 80, rotateX: -90 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ 
+              duration: 0.8,
+              ease: [0.215, 0.61, 0.355, 1]
+            }}
             className="block text-black"
           >
             KRESHANT
           </motion.span>
 
-          {/* KUMAR */}
+          {/* KUMAR with staggered letter animation */}
           <motion.span
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="block text-purple-500 font-outline"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+            className="block"
           >
-            KUMAR
+            {"KUMAR".split("").map((letter, index) => (
+              <motion.span
+                key={index}
+                variants={{
+                  hidden: { 
+                    opacity: 0, 
+                    y: 80, 
+                    rotateY: -90 
+                  },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0, 
+                    rotateY: 0 
+                  }
+                }}
+                transition={{ 
+                  duration: 0.6,
+                  ease: [0.215, 0.61, 0.355, 1],
+                  delay: 0.2 + index * 0.1
+                }}
+                className="inline-block text-transparent"
+                style={{ 
+                  WebkitTextStroke: "2px #8B5CF6" // purple-500
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
           </motion.span>
         </h1>
 
@@ -109,33 +150,52 @@ export const Hero = () => {
 
         {/* 🚀 CTA BUTTONS */}
         <div className="mt-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
-
-          {/* PRIMARY — Uiverse style */}
+          {/* PRIMARY — Uiverse style with pastel purple gradient */}
           <a
             href="#contact"
-            className="group relative px-8 py-4 rounded-full bg-black text-white font-semibold overflow-hidden"
+            className="group relative px-8 py-4 rounded-full font-semibold overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+            style={{
+              background: 'linear-gradient(45deg, #c77dff, #a855f7, #d8b4fe)',
+              backgroundSize: '200% 200%',
+            }}
           >
-            {/* Shine */}
-            <span className="absolute left-[-100%] top-0 w-full h-full
-            bg-gradient-to-r from-transparent via-white/40 to-transparent
-            group-hover:left-[100%] transition-all duration-700" />
-
-            <span className="relative flex items-center gap-2">
-              Let’s Work Together
-              <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition" />
+            {/* Animated gradient shine effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent 
+                          opacity-0 group-hover:opacity-100 group-hover:animate-pulse" />
+            
+            <span className="relative flex items-center gap-2 text-white">
+              Let's Work Together
+              <ArrowDownRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
             </span>
           </a>
 
-          {/* SECONDARY */}
-          <a
-            href="#projects"
-            className="px-8 py-4 rounded-full border border-black/20 font-semibold
-            transition-all duration-300 hover:bg-black hover:text-white"
+          {/* SECONDARY — Resume Download with Anime/Game Vibe */}
+          <motion.a
+            href="/doc/Kreshant_Fresher_Designer_CV.pdf"
+            download="Kreshant_Fresher_Designer_CV.pdf"
+            onClick={handleDownload}
+            className="group relative px-8 py-4 rounded-full font-semibold overflow-hidden border-2 border-purple-300 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(168, 85, 247, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
           >
-            View Projects
-          </a>
+            {/* Animated download icon */}
+            <motion.span
+              animate={isDownloading ? { rotate: 360 } : {}}
+              transition={{ duration: 1, repeat: isDownloading ? Infinity : 0, ease: "linear" }}
+            >
+              <Download className="w-5 h-5 text-purple-600 group-hover:text-purple-800 transition-colors" />
+            </motion.span>
+            
+            <span className="relative text-purple-700 group-hover:text-purple-900 transition-colors">
+              {isDownloading ? "Downloading..." : "Download Resume"}
+            </span>
+          </motion.a>
         </div>
       </motion.div>
     </section>
   );
 };
+

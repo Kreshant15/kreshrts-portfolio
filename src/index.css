@@ -23,7 +23,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-[#f5f1eb] text-[#1a1a1a] selection:bg-accent-pink selection:text-white transition-colors duration-300;
+    @apply bg-[#fafafa] text-[#1a1a1a] selection:bg-accent-pink selection:text-white transition-colors duration-300;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 }

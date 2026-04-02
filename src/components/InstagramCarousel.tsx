@@ -11,9 +11,16 @@ const instagramPosters = [
   { id: 3, url: "/images/insta/Digital-Skin.webp", title: "Digital Skin" },
   { id: 4, url: "/images/insta/antaryatra.webp",   title: "Antaryātrā" },
   { id: 5, url: "/images/insta/Ember.webp",        title: "Ember" },
-  { id: 6, url: "/images/insta/krodh.webp",        title: "Krodha" },
+  { id: 6, url: "/images/insta/krodh.webp",        title: "Krodh" },
   { id: 7, url: "/images/insta/Greed.webp",        title: "Greed" },
   { id: 8, url: "/images/insta/Lo-Fi-Utopia.webp", title: "Lo-Fi Utopia" },
+  { id: 9, url: "/images/insta/Maya.webp",         title: "Maya" },
+  { id: 10, url: "/images/insta/Missing-Link.webp",      title: "Missing-Link" },
+  { id: 11, url: "/images/insta/Moksha.webp",     title: "Moksha" },
+  { id: 12, url: "/images/insta/Pixelation.webp", title: "Pixelation" },
+  { id: 13, url: "/images/insta/Shakti.webp",      title: "Shakti" },
+  { id: 14, url: "/images/insta/Wisdom.webp",        title: "Wisdom" },
+  { id: 15, url: "/images/insta/Pixel-Drift.webp",      title: "Pixel-Drift" },
 ];
 
 // ─── Single poster card ──────────────────────────────────────────────────────

@@ -132,7 +132,7 @@ const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$
 function useTextScramble(target: string, trigger: boolean) {
   const [display, setDisplay] = useState(target);
   const frame = useRef(0);
-  const raf = useRef<number>();
+  const raf = useRef<number | null>(null);
 
   useEffect(() => {
     if (!trigger) return;

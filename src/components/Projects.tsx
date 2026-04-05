@@ -17,7 +17,7 @@ const projects: Project[] = [
     id: 1,
     title: "Driphive",
     category: "Branding",
-    image: "https://picsum.photos/seed/drip/800/600",
+    image: "/images/projects/driphive/Cover-Image.webp",
     tag: "BRAND",
   },
   {

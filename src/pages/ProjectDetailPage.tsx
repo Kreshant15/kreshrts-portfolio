@@ -36,7 +36,7 @@ const projectDetails: Record<number, ProjectDetail> = {
     date: "March 2025",
     tags: ["Branding", "Visual Identity", "Graphic Design"],
     fullDescription:
-      "DripHive – The Pulse of Street Culture. DripHive is an imaginative concept brand created as a showcase of my design skills, creativity, and branding capabilities. This project brings together elements of streetwear, skate culture, and urban aesthetics to craft a bold and visually striking identity. From gritty graphics to statement apparel, DripHive represents a rebellious, trend-forward style. Every element—typography, textures, and visuals—has been carefully designed to reflect the raw energy of the streets, demonstrating my ability to create engaging brand identities, promotional materials, and marketing visuals. 💥 No Rules. No Limits. Just Drip. 💥. This project is purely for creative exploration and is not a real brand. Explore the concept and the vision behind it.",
+      "DripHive – The Pulse of Street Culture. DripHive is an imaginative concept brand created as a showcase of my design skills, creativity, and branding capabilities. This project brings together elements of streetwear, skate culture, and urban aesthetics to craft a bold and visually striking identity.\n\nFrom gritty graphics to statement apparel, DripHive represents a rebellious, trend-forward style. Every element—typography, textures, and visuals—has been carefully designed to reflect the raw energy of the streets, demonstrating my ability to create engaging brand identities, promotional materials, and marketing visuals.\n\n💥 No Rules. No Limits. Just Drip. 💥.\n\nThis project is purely for creative exploration and is not a real brand. Explore the concept and the vision behind it.",
   },
   2: {
     id: 2,

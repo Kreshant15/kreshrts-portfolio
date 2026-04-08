@@ -17,7 +17,7 @@ const projects: Project[] = [
     id: 1,
     title: "Driphive",
     category: "Branding",
-    image: "/images/projects/driphive/Cover-Image.webp",
+    image: "/images/projects/driphive/Driphive-cover.webp",
     tag: "BRAND",
   },
   {
@@ -31,7 +31,7 @@ const projects: Project[] = [
     id: 3,
     title: "Banana Quest",
     category: "UI Design",
-    image: "https://picsum.photos/seed/banana/800/600",
+    image: "/images/projects/Banana-Quest/Banana-quest-cover.webp",
     tag: "UI",
   },
   {

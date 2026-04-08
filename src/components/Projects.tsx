@@ -31,7 +31,7 @@ const projects: Project[] = [
     id: 3,
     title: "Banana Quest",
     category: "UI Design",
-    image: "/images/projects/Banana_Quest/cover.webp",
+    image: "/images/projects/bquest/cover.webp",
     tag: "UI",
   },
   {

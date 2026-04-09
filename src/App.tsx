@@ -5,7 +5,6 @@ import { ProjectsPage } from "./pages/ProjectsPage";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { BackToTop } from "./components/BackToTop";
-<Route path="/projects/:id" element={<ProjectDetailPage />} />
 
 export default function App() {
   return (
@@ -19,7 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/"          element={<HomePage />} />
           <Route path="/projects"  element={<ProjectsPage />} />
-          <Route path="/project/:id" element={<ProjectDetailPage />} />
+          <Route path="/projects/:id" element={<ProjectDetailPage />} />
         </Routes>
       </Router>
     </MotionConfig>

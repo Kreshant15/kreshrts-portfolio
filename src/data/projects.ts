@@ -16,6 +16,7 @@ export interface ProjectDetail {
 }[];
   hero?: string;          // main banner image
   gallery?: string[];     // multiple images
+  sectionImages?: { [sectionTitle: string]: string[] }; // images specific to sections
 }
 
 export const projects: ProjectDetail[] = [

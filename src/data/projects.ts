@@ -41,5 +41,35 @@ export const projects: ProjectDetail[] = [
     tags: ["Branding", "Visual Identity"],
     fullDescription:
       "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
+  },
+
+  {
+    id: "banana-quest",
+    title: "Banana Quest",
+    category: "UI Design",
+    tag: "UI",
+    image: "/images/projects/bquest/cover.webp",
+    description:
+      "Visual identity for a tech-forward creative agency at the intersection of art and engineering.",
+    client: "Personal Project",
+    date: "August 2024",
+    tags: ["Branding", "Visual Identity"],
+    fullDescription:
+      "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
+  },
+
+  {
+    id: "pixel-era",
+    title: "Pixel Era",
+    category: "Poster Design",
+    tag: "PRINT",
+    image: "/images/projects/pixel/cover.webp",
+    description:
+      "Visual identity for a tech-forward creative agency at the intersection of art and engineering.",
+    client: "Personal Project",
+    date: "August 2024",
+    tags: ["Branding", "Visual Identity"],
+    fullDescription:
+      "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
   }
 ];

@@ -3,45 +3,46 @@ import { motion, useReducedMotion } from "motion/react";
 import { useState, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { projects } from "../data/projects";
 
 interface Project {
-  id: number;
+  id: string;
   title: string;
   category: string;
   image: string;
   tag: string; // short mono tag shown on card
 }
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Driphive",
-    category: "Branding",
-    image: "/images/projects/driphive/Driphive-cover.webp",
-    tag: "BRAND",
-  },
-  {
-    id: 2,
-    title: "Vexels",
-    category: "Branding",
-    image: "https://picsum.photos/seed/vex/800/600",
-    tag: "BRAND",
-  },
-  {
-    id: 3,
-    title: "Banana Quest",
-    category: "UI Design",
-    image: "/images/projects/bquest/cover.webp",
-    tag: "UI",
-  },
-  {
-    id: 4,
-    title: "Pixel Era",
-    category: "Poster Design",
-    image: "https://picsum.photos/seed/pixel/800/600",
-    tag: "PRINT",
-  },
-];
+// const projects: Project[] = [
+//   {
+//     id: "driphive",
+//     title: "Driphive",
+//     category: "Branding",
+//     image: "/images/projects/driphive/Driphive-cover.webp",
+//     tag: "BRAND",
+//   },
+//   {
+//     id: "vexels",
+//     title: "Vexels",
+//     category: "Branding",
+//     image: "https://picsum.photos/seed/vex/800/600",
+//     tag: "BRAND",
+//   },
+//   {
+//     id: "banana-quest",
+//     title: "Banana Quest",
+//     category: "UI Design",
+//     image: "/images/projects/bquest/cover.webp",
+//     tag: "UI",
+//   },
+//   {
+//     id: "pixel-era",
+//     title: "Pixel Era",
+//     category: "Poster Design",
+//     image: "https://picsum.photos/seed/pixel/800/600",
+//     tag: "PRINT",
+//   },
+// ];
 
 // ─── Individual Project Card ─────────────────────────────────────────────────
 

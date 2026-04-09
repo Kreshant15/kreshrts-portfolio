@@ -25,7 +25,7 @@ export const projects: ProjectDetail[] = [
   category: "Branding",
   tag: "BRAND",
 
-  image: "/images/projects/driphive/Driphive-cover.webp",
+  image: "/images/projects/driphive/hero.webp",
 
   description:
     "A bold streetwear concept exploring identity, rebellion, and modern urban culture.",
@@ -42,7 +42,7 @@ export const projects: ProjectDetail[] = [
 
   // 🔥 MAIN GALLERY (top visuals / highlights)
   gallery: [
-    "/images/projects/driphive/Driphive-cover.webp",
+    "/images/projects/driphive/hero.webp",
     "/images/projects/driphive/ad-banner-skateboard.webp",
     "/images/projects/driphive/Mockup.webp",
   ],

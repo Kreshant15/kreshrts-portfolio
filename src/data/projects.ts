@@ -25,7 +25,7 @@ export const projects: ProjectDetail[] = [
   category: "Branding",
   tag: "BRAND",
 
-  image: "/images/projects/driphive/hero.webp",
+  image: "/images/projects/driphive/Driphive-cover.webp",
 
   description:
     "A bold streetwear concept exploring identity, rebellion, and modern urban culture.",
@@ -38,7 +38,7 @@ export const projects: ProjectDetail[] = [
     "DripHive — The Pulse of Street Culture.\n\nDripHive is a conceptual streetwear brand built as an exploration of bold visual identity, urban expression, and youth-driven aesthetics. The project focuses on crafting a rebellious and high-energy brand language that stands out through typography, color, and composition.",
 
   // 🔥 HERO (use your best clean wide image)
-  hero: "/images/projects/driphive/Driphive-cover.webp",
+  hero: "/images/projects/driphive/hero.webp",
 
   // 🔥 MAIN GALLERY (top visuals / highlights)
   gallery: [

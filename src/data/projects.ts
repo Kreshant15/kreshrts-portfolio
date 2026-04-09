@@ -136,19 +136,111 @@ export const projects: ProjectDetail[] = [
 },
 
   {
-    id: "vexels",
-    title: "Vexels",
-    category: "Branding",
-    tag: "BRAND",
-    image: "/images/projects/vexels/cover.webp",
-    description:
-      "Visual identity for a tech-forward creative agency at the intersection of art and engineering.",
-    client: "Personal Project",
-    date: "August 2024",
-    tags: ["Branding", "Visual Identity"],
-    fullDescription:
-      "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
-  },
+  id: "vexels",
+  title: "Vexels",
+  category: "Branding",
+  tag: "BRAND",
+
+  image: "/images/projects/vexels/cover.webp",
+
+  description:
+    "A playful and expressive brand identity inspired by comics, pop visuals, and storytelling.",
+
+  client: "Personal Project",
+  date: "April 2025",
+  tags: ["Branding", "Visual Identity", "Packaging", "Social Media"],
+
+  fullDescription:
+    "Vexels — A Visual Playground.\n\nVexels is a concept brand built around comic-inspired storytelling, bold colors, and expressive visuals. The project explores how playful graphics and dynamic layouts can create an engaging and memorable identity.\n\nUnlike minimal corporate branding, Vexels embraces energy, personality, and visual experimentation — making it vibrant, youthful, and full of character.",
+
+  // 🔥 HERO (choose your strongest visual)
+  hero: "/images/projects/vexels/hero.webp",
+
+  // 🔥 TOP GALLERY (first impression)
+  gallery: [
+    "/images/projects/vexels/Artboard-3.webp",
+    "/images/projects/vexels/Artboard-5.webp",
+    "/images/projects/vexels/Artboard-8.webp",
+  ],
+
+  sections: [
+    {
+      title: "Concept",
+      content:
+        "Vexels was designed as a playful brand identity inspired by comic culture, pop art, and visual storytelling. The goal was to create a system that feels expressive, vibrant, and full of personality.\n\nThe identity embraces bold shapes, bursts, stickers, and dynamic compositions to create an energetic and engaging visual language.",
+      images: [],
+    },
+
+    {
+      title: "Brand Guidelines",
+      content:
+        "A comprehensive brand system was developed to define the visual identity, including personality, tone, and core values. The system ensures consistency across all touchpoints while maintaining a playful and expressive character.",
+      images: [
+        "/images/projects/vexels/brand-guidelines.webp",
+      ],
+    },
+
+    {
+      title: "Identity System",
+      content:
+        "The identity system includes logo variations, typefaces, and a bold color palette. Bright and contrasting colors combined with playful typography create a distinctive and recognizable brand presence.\n\nThe system is flexible and scalable, allowing it to adapt across different mediums while maintaining consistency.",
+      images: [
+        "/images/projects/vexels/Artboard-1.webp",
+        "/images/projects/vexels/Artboard-2.webp",
+      ],
+    },
+
+    {
+      title: "Print & Packaging",
+      content:
+        "The brand was extended into print and packaging applications including business cards, tags, and shopping bags. These elements demonstrate how the identity translates into physical formats while maintaining its expressive visual language.",
+      images: [
+        "/images/projects/vexels/Business-Card.webp",
+        "/images/projects/vexels/tags.webp",
+        "/images/projects/vexels/bag.webp",
+      ],
+    },
+
+    {
+      title: "Editorial & Comic System",
+      content:
+        "The identity expands into editorial layouts inspired by comic storytelling. The use of panels, bold typography, and vibrant compositions creates an immersive narrative experience.\n\nThis approach reinforces the brand’s playful personality while maintaining structure and readability.",
+      images: [
+        "/images/projects/vexels/comic-open.webp",
+        "/images/projects/vexels/magazine.webp",
+      ],
+    },
+
+    {
+      title: "Social Media",
+      content:
+        "A series of social media creatives were designed to explore how the brand communicates digitally. The focus was on high-impact visuals, bold typography, and engaging layouts.\n\nThese designs simulate real campaigns and help establish a consistent online presence.",
+      images: [
+        "/images/projects/vexels/Social-Media-1.webp",
+        "/images/projects/vexels/Social-Media-2.webp",
+        "/images/projects/vexels/Social-Media-3.webp",
+        "/images/projects/vexels/Social-Media-4.webp",
+      ],
+    },
+
+    {
+      title: "Applications & Mockups",
+      content:
+        "To visualize real-world usage, the identity was applied across posters, building signage, and promotional mockups. These applications showcase how the brand performs across different environments and scales effectively.",
+      images: [
+        "/images/projects/vexels/poster.webp",
+        "/images/projects/vexels/Sign-on-Building.webp",
+      ],
+    },
+
+    {
+      title: "Conclusion",
+      content:
+        "Vexels is an exploration of expressive branding — combining color, typography, and playful elements to create a lively and engaging identity.\n\nThis project demonstrates my ability to build flexible design systems that balance creativity with structure across multiple touchpoints.",
+      images: [],
+    },
+  ],
+},
 
   {
     id: "banana-quest",

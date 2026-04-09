@@ -214,9 +214,9 @@ export const ProjectDetailPage = () => {
     </h2>
 
     {/* Content */}
-    <p className="text-neutral-500 leading-relaxed mb-6 whitespace-pre-line">
-      {section.content}
-    </p>
+    <p className="text-sm md:text-base text-neutral-600 leading-loose mb-6 whitespace-pre-line">
+  {section.content}
+</p>
 
     {/* 🔥 Images */}
     {section.images && section.images.length > 0 && (

@@ -298,6 +298,44 @@ export const Navbar = () => {
 
               {/* ── Nav links ── */}
               <nav className="relative flex-1 flex flex-col justify-center px-8 gap-1" aria-label="Mobile links">
+                <motion.div
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.08, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Link
+                    to="/sketchbook"
+                    onClick={() => setIsOpen(false)}
+                    className="group flex items-center justify-between px-4 py-3 mb-3
+                      rounded-2xl border border-violet-200/80 bg-violet-50/80
+                      shadow-[0_6px_24px_rgba(124,58,237,0.08)]"
+                    aria-label="Open Sketchbook"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg text-violet-500 transition-transform duration-200 group-hover:scale-110">
+                        {'\u2726'}
+                      </span>
+                      <div className="flex flex-col">
+                        <span
+                          className="text-3xl text-violet-700 leading-none"
+                          style={{ fontFamily: "'Caveat', cursive" }}
+                        >
+                          Sketchbook
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-violet-400">
+                          The Other Side
+                        </span>
+                      </div>
+                    </div>
+                    <span
+                      className="text-violet-300 group-hover:text-violet-500
+                        transition-colors duration-200 font-mono text-xs"
+                    >
+                      {'\u2197'}
+                    </span>
+                  </Link>
+                </motion.div>
+
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.name}

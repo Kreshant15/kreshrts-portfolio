@@ -21,24 +21,38 @@ import { useNavigate } from 'react-router-dom';
 
 const drawings = [
   { src: '/sketchbook/drawing-01.jpg', label: 'figure study', note: 'pencil, 2023', rotate: -3, top: 120, left: 8 },
-  { src: '/sketchbook/drawing-02.jpg', label: 'character thing', note: 'ballpoint', rotate: 2, top: 80, left: 38 },
+  { src: '/sketchbook/naruto.webp', label: 'character thing', note: 'ballpoint', rotate: 2, top: 80, left: 38 },
   { src: '/sketchbook/drawing-03.jpg', label: 'anatomy attempt', note: 'ink', rotate: -1.5, top: 140, left: 62 },
   { src: '/sketchbook/drawing-04.jpg', label: 'random face', note: '3am energy', rotate: 4, top: 90, left: 18 },
-  { src: '/sketchbook/drawing-05.jpg', label: 'landscape thing', note: 'pencil', rotate: -2, top: 110, left: 72 },
+  { src: '/sketchbook/landscape.webp', label: 'landscape thing', note: 'pencil', rotate: -2, top: 110, left: 72 },
   { src: '/sketchbook/drawing-06.jpg', label: 'hands (ugh)', note: 'still struggling', rotate: 1, top: 130, left: 48 },
 ];
 
 // Your PNG stickers — ransom letters, cutout text, etc.
 // Place them in /public/sketchbook/stickers/
 const stickers: { src: string; style: React.CSSProperties }[] = [
-  // { src: '/sketchbook/stickers/ransom-01.png', style: { top: '5%', left: '70%', width: 120, transform: 'rotate(8deg)' } },
+  { src: '/sketchbook/stickers/skull.webp', style: { top: '5%', left: '70%', width: 120, transform: 'rotate(8deg)' } },
   // { src: '/sketchbook/stickers/ransom-02.png', style: { top: '42%', left: '5%', width: 90, transform: 'rotate(-5deg)' } },
   // Add yours here — uncomment and set your actual paths
 ];
 
 // Your music file — place in /public/sketchbook/
 // Recommended: ~2min ambient lo-fi loop, mp3 format, <3MB
-const musicSrc = '/sketchbook/ambience.mp3';
+const musicList = [
+  '/sketchbook/ambience1.mp3',
+  '/sketchbook/ambience2.mp3',
+  '/sketchbook/ambience3.mp3'
+];
+
+const trackColors = [
+  "#a78bfa", // violet
+  "#fca5a5", // soft red
+  "#6ee7b7", // mint
+];
+
+const [currentTrack, setCurrentTrack] = useState(0);
+
+const currentColor = trackColors[currentTrack];
 
 // ─── MARGIN ANNOTATIONS ────────────────────────────────────────────────────────
 const annotations = [
@@ -146,51 +160,92 @@ export default function SketchbookPage() {
 
       {/* ── AUDIO ── */}
       <audio
-        ref={audioRef}
-        src={musicSrc}
-        loop
-        onCanPlayThrough={() => setMusicReady(true)}
-        preload="none"
-      />
+  ref={audioRef}
+  src={musicList[currentTrack]}
+  onEnded={() =>
+    setCurrentTrack((prev) => (prev + 1) % musicList.length)
+  }
+  onCanPlayThrough={() => setMusicReady(true)}
+  preload="none"
+/>
 
       {/* ── MUSIC PLAYER ── */}
       <div className="music-player">
-        <div className="music-player-inner">
-          <div className="music-eq" aria-hidden="true">
-            {musicPlaying && (
-              <>
-                <span className="eq-bar" style={{ animationDelay: '0ms' }} />
-                <span className="eq-bar" style={{ animationDelay: '150ms' }} />
-                <span className="eq-bar" style={{ animationDelay: '75ms' }} />
-                <span className="eq-bar" style={{ animationDelay: '225ms' }} />
-              </>
-            )}
-            {!musicPlaying && <span className="music-note">♪</span>}
-          </div>
-          <button
-            className="music-btn"
-            onClick={toggleMusic}
-            aria-label={musicPlaying ? 'Pause music' : 'Play ambient music'}
-          >
-            {musicPlaying ? '⏸' : '▶'}
-          </button>
-          <div className="music-label">
-            {musicPlaying ? 'playing' : 'ambient'}
-          </div>
-          {musicPlaying && (
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.05"
-              value={volume}
-              onChange={handleVolumeChange}
-              className="vol-slider"
-              aria-label="Volume"
-            />
-          )}
-        </div>
+  <div
+    className="music-player-inner transition-all duration-500"
+    style={{
+      boxShadow: musicPlaying
+        ? `0 0 20px ${currentColor}40, 0 0 40px ${currentColor}20`
+        : "none",
+      borderColor: currentColor,
+    }}
+  >
+    {/* EQ */}
+    <div className="music-eq" aria-hidden="true">
+      {musicPlaying ? (
+        <>
+          <span
+            className="eq-bar"
+            style={{ animationDelay: "0ms", background: currentColor }}
+          />
+          <span
+            className="eq-bar"
+            style={{ animationDelay: "150ms", background: currentColor }}
+          />
+          <span
+            className="eq-bar"
+            style={{ animationDelay: "75ms", background: currentColor }}
+          />
+          <span
+            className="eq-bar"
+            style={{ animationDelay: "225ms", background: currentColor }}
+          />
+        </>
+      ) : (
+        <span className="music-note" style={{ color: currentColor }}>
+          ♪
+        </span>
+      )}
+    </div>
+
+    {/* Play Button */}
+    <button
+      className="music-btn transition-colors duration-300"
+      onClick={toggleMusic}
+      aria-label={musicPlaying ? "Pause music" : "Play ambient music"}
+      style={{ color: currentColor }}
+    >
+      {musicPlaying ? "⏸" : "▶"}
+    </button>
+
+    {/* Label */}
+    <div className="music-label">
+      {musicPlaying ? `track ${currentTrack + 1}` : "ambient"}
+    </div>
+
+    {/* Track indicator */}
+    {musicPlaying && (
+      <div className="text-[10px] opacity-50 ml-1">
+        {currentTrack + 1} · {musicList.length}
       </div>
+    )}
+
+    {/* Volume */}
+    {musicPlaying && (
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.05"
+        value={volume}
+        onChange={handleVolumeChange}
+        className="vol-slider"
+        aria-label="Volume"
+        style={{ accentColor: currentColor }}
+      />
+    )}
+  </div>
+</div>
 
       {/* ── BACK BUTTON ── */}
       <button className="back-btn" onClick={handleBack} aria-label="Back to portfolio">
@@ -210,7 +265,7 @@ export default function SketchbookPage() {
                 <text key={i} x={`${d.x}%`} y={`${d.y}%`} fontSize={d.size} fill={d.color} opacity={d.opacity} textAnchor="middle">✦</text>
               );
               if (d.type === 'circle') return (
-                <circle key={i} cx={`${d.x}%`} cy={`${d.y}%`} r={`${d.size / 2}%`} fill={d.color} stroke="none" />
+                <circle key={i} cx={`${d.x}%`} cy={`${d.y}%`} r={`$d.size / 2}%`} fill={d.color} stroke="none" />
               );
               if (d.type === 'squiggle') return (
                 <path key={i} d={`M${d.x}% ${d.y}% Q${d.x+3}% ${d.y-2}% ${d.x+6}% ${d.y}% Q${d.x+9}% ${d.y+2}% ${d.x+12}% ${d.y}%`}

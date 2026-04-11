@@ -158,7 +158,7 @@ export const projects: ProjectDetail[] = [
 
   // 🔥 TOP GALLERY (first impression)
   gallery: [
-    "/images/projects/vexels/Artboard-3.webp",
+    "/images/projects/vexels/stationary.webp",
     "/images/projects/vexels/Artboard-5.webp",
     "/images/projects/vexels/Artboard-8.webp",
   ],
@@ -176,7 +176,7 @@ export const projects: ProjectDetail[] = [
       content:
         "A comprehensive brand system was developed to define the visual identity, including personality, tone, and core values. The system ensures consistency across all touchpoints while maintaining a playful and expressive character.",
       images: [
-        "/images/projects/vexels/brand-guidelines.webp",
+        "/images/projects/vexels/guidelines.webp",
       ],
     },
 
@@ -185,8 +185,8 @@ export const projects: ProjectDetail[] = [
       content:
         "The identity system includes logo variations, typefaces, and a bold color palette. Bright and contrasting colors combined with playful typography create a distinctive and recognizable brand presence.\n\nThe system is flexible and scalable, allowing it to adapt across different mediums while maintaining consistency.",
       images: [
-        "/images/projects/vexels/Artboard-1.webp",
-        "/images/projects/vexels/Artboard-2.webp",
+        "/images/projects/vexels/logo.webp",
+        "/images/projects/vexels/typo.webp",
       ],
     },
 

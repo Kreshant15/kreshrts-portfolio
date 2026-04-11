@@ -164,7 +164,7 @@ export default function SketchbookPage() {
     setCurrentTrack((prev) => (prev + 1) % musicList.length)
   }
   onCanPlayThrough={() => setMusicReady(true)}
-  preload="none"
+  preload="auto"
 />
 
       {/* ── MUSIC PLAYER ── */}

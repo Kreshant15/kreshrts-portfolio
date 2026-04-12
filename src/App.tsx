@@ -6,6 +6,7 @@ import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { BackToTop } from "./components/BackToTop";
 import SketchbookPage from './pages/SketchbookPage';
+import { AuraPrototypePage } from "./pages/AuraPrototypePage";
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <BackToTop />
         <Routes>
           <Route path="/"          element={<HomePage />} />
+          <Route path="/aura"      element={<AuraPrototypePage />} />
           <Route path="/projects"  element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectDetailPage />} />
           <Route path="/sketchbook" element={<SketchbookPage />} />

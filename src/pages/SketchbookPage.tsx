@@ -31,7 +31,7 @@ const drawings = [
 // Your PNG stickers â€” ransom letters, cutout text, etc.
 // Place them in /public/sketchbook/stickers/
 const stickers: { src: string; style: React.CSSProperties }[] = [
-  { src: '/sketchbook/stickers/skull.webp', style: { top: '5%', left: '70%', width: 120, transform: 'rotate(8deg)' } },
+  { src: '/sketchbook/stickers/Skull.webp', style: { top: '5%', left: '70%', width: 120, transform: 'rotate(8deg)' } },
   // { src: '/sketchbook/stickers/ransom-02.png', style: { top: '42%', left: '5%', width: 90, transform: 'rotate(-5deg)' } },
   // Add yours here â€” uncomment and set your actual paths
 ];

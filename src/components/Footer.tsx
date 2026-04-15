@@ -113,7 +113,7 @@ export const Footer = () => {
           bg-linear-to-tr from-violet-100/30 to-transparent blur-[70px] pointer-events-none" />
 
         {/* Email CTA strip */}
-        <div className="relative border-b border-neutral-200/60 py-12 px-4 sm:px-6 text-center">
+        <div className="relative border-b border-neutral-200/60 pt-20 pb-12 px-4 sm:px-6 text-center">
           <motion.p
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="font-mono text-[10px] uppercase tracking-[0.35em] text-purple-500 mb-3"

@@ -14,6 +14,12 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+const getCenteredOddImageClass = (index: number, total: number) => {
+  const isCenteredOddImage = total % 2 === 1 && total !== 1 && index === total - 1;
+
+  return isCenteredOddImage ? "md:col-span-2 md:mx-auto md:w-[min(100%,32rem)]" : "";
+};
+
 // ─── 404 ───────────────────────────────────────────────────
 const NotFound = () => (
   <main className="min-h-screen bg-cream flex items-center justify-center px-6">
@@ -150,7 +156,7 @@ export const ProjectDetailPage = () => {
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-neutral-500 max-w-lg">
+              <p className="text-base md:text-lg text-neutral-500 max-w-2xl">
                 {project.description}
               </p>
 
@@ -238,7 +244,7 @@ export const ProjectDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="max-w-3xl mb-20"
+            className="max-w-5xl mb-20"
           >
             <SectionLabel>Overview</SectionLabel>
             <p className="text-neutral-500 leading-relaxed whitespace-pre-line">
@@ -267,7 +273,7 @@ export const ProjectDetailPage = () => {
               </h2>
 
               {/* Section Content */}
-              <p className="text-[15px] md:text-[17px] text-neutral-600 leading-relaxed md:leading-loose max-w-2xl mb-10 whitespace-pre-line">
+              <p className="text-[15px] md:text-[17px] text-neutral-600 leading-relaxed md:leading-loose max-w-5xl mb-10 whitespace-pre-line">
                 {section.content}
               </p>
 
@@ -277,7 +283,7 @@ export const ProjectDetailPage = () => {
                   {section.images.map((img, i) => (
                     <motion.div
                       key={i}
-                      className="group relative overflow-hidden rounded-2xl shadow-md"
+                      className={`group relative overflow-hidden rounded-2xl shadow-md ${getCenteredOddImageClass(i, section.images.length)}`}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -313,7 +319,7 @@ export const ProjectDetailPage = () => {
               {project.gallery.map((img, i) => (
                 <motion.div 
                   key={i} 
-                  className="rounded-xl overflow-hidden shadow-md"
+                  className={`rounded-xl overflow-hidden shadow-md ${getCenteredOddImageClass(i, project.gallery.length)}`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

@@ -21,6 +21,7 @@ export interface ProjectDetail {
 }
 
 export const projects: ProjectDetail[] = [
+// driphive 
   {
   id: "driphive",
   title: "Driphive",
@@ -136,6 +137,7 @@ export const projects: ProjectDetail[] = [
   ],
 },
 
+// vexels
   {
   id: "vexels",
   title: "Vexels",
@@ -245,6 +247,7 @@ export const projects: ProjectDetail[] = [
   ],
 },
 
+// banana quest
   {
     id: "banana-quest",
     title: "Banana Quest",
@@ -260,6 +263,7 @@ export const projects: ProjectDetail[] = [
       "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
   },
 
+// pixel era
   {
     id: "pixel-era",
     title: "Pixel Era",
@@ -275,13 +279,14 @@ export const projects: ProjectDetail[] = [
       "Vexels Studio required an identity that communicated technical precision and creative energy simultaneously.\n\nThe brand system uses geometric modular shapes and a sharp palette to represent where technology meets art.",
   },
 
+// aura app
   {
     id: "aura-app",
-    title: "Aura App Screens",
-    category: "UI Prototype",
+    title: "Aura",
+    category: "UI Design",
     tag: "APP",
     prototypeUrl: "/aura",
-    image: "/images/projects/aura/cover.webp",
+    image: "/images/projects/aura/pcover.webp",
     description:
       "A mood-led music app concept translated from Figma into a working portfolio prototype with a soft editorial case study and interactive mobile flow.",
     client: "Personal Concept",

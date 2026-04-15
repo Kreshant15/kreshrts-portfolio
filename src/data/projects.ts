@@ -301,7 +301,7 @@ export const projects: ProjectDetail[] = [
     "Aura explores a different approach to music interaction — one that begins with feeling instead of search.\n\nInstead of navigating playlists or algorithms, users enter a mood state, adjust it through a tactile interface, and experience sound as something that adapts to them.\n\nThis project combines interface design, interaction thinking, and a working prototype to present a more emotional, ambient, and personal listening experience.",
 
   // 🔥 HERO VISUAL (IMPORTANT)
-  hero: "/images/projects/aura/hero-main.webp",
+  hero: "/images/projects/aura/mockup1.webp",
 
   // 🔥 CURATED GALLERY (NO RANDOMS)
   gallery: [
@@ -319,7 +319,7 @@ export const projects: ProjectDetail[] = [
       title: "What is Aura",
       content:
         "Aura rethinks music as a state, not a library. Instead of searching for tracks, the experience begins with how you feel.\n\nThe interface responds to that emotional input through color, motion, and sound — turning listening into something closer to a guided ritual than a playlist.",
-      images: ["/images/projects/aura/mockup-overview.webp"],
+      images: ["/images/projects/aura/onboard-mockup.webp"],
     },
 
     // 2️⃣ EMOTIONAL SYSTEM (USP)
@@ -328,8 +328,8 @@ export const projects: ProjectDetail[] = [
       content:
         "At the core of Aura is a simple system: mood drives everything.\n\nEach emotional state is mapped to a visual identity, interaction behavior, and sonic direction. The interface becomes a translation layer between internal feeling and external sound.\n\nMood → Color → Interface → Music → Outcome.",
       images: [
-        "/images/projects/aura/mood-system.webp",
-        "/images/projects/aura/orb-focus.webp"
+        "/images/projects/aura/logo-mark.webp",
+        "/images/projects/aura/app-icon.webp"
       ],
     },
 
@@ -340,7 +340,6 @@ export const projects: ProjectDetail[] = [
         "The visual language balances immersive UI with a soft editorial tone. Instead of high contrast and sharp edges, the system uses glow, translucency, and spatial softness to create a calmer experience.\n\nColor represents emotion, typography balances expression and clarity, and surfaces feel layered rather than flat.",
       images: [
         "/images/projects/aura/brand-guidelines.webp",
-        "/images/projects/aura/ui-surfaces.webp"
       ],
     },
 
@@ -380,7 +379,10 @@ export const projects: ProjectDetail[] = [
       title: "Live Prototype",
       content:
         "This project extends beyond static visuals. The prototype recreates the experience with real interactions — including mood switching, live calibration, animated playback, and dynamic UI responses.\n\nIt allows viewers to engage with the system as a product rather than just observe it as a design.",
-      images: ["/images/projects/aura/prototype-preview.webp"],
+      images: [
+        "/images/projects/aura/mockup2.webp",
+        "/images/projects/aura/mockup3.webp"
+      ],
     }
   ]
 }

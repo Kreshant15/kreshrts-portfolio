@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MotionConfig } from "motion/react";
 import { HomePage } from "./pages/HomePage";
 import { ProjectsPage } from "./pages/ProjectsPage";
-import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { BackToTop } from "./components/BackToTop";
 import SketchbookPage from './pages/SketchbookPage';
 import { AuraPrototypePage } from "./pages/AuraPrototypePage";
+import { ProjectRouter } from "./ProjectRouter";
 
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
           <Route path="/"          element={<HomePage />} />
           <Route path="/aura"      element={<AuraPrototypePage />} />
           <Route path="/projects"  element={<ProjectsPage />} />
-          <Route path="/projects/:id" element={<ProjectDetailPage />} />
+          <Route path="/projects/:id" element={<ProjectRouter />} />
           <Route path="/sketchbook" element={<SketchbookPage />} />
         </Routes>
       </Router>

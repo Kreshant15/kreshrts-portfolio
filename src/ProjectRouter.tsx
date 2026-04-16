@@ -1,26 +1,20 @@
-// ProjectRouter.tsx
-// Drop this into your router config instead of directly using ProjectDetailPage
+// ProjectRouter.tsx — All custom project pages registered
 
 import React, { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { ProjectDetailPage } from "./pages/ProjectDetailPage";
-
-// ─── Register custom project pages here ───────────────────
-// Only add projects that have a dedicated .tsx page.
-// All others automatically fall back to the generic template.
+import { ProjectDetailPage } from "../pages/ProjectDetailPage";
 
 const customProjectPages: Record<string, React.LazyExoticComponent<() => React.JSX.Element>> = {
-  "driphive": lazy(() =>
-    import("./projects/DripHiveProject").then((m) => ({ default: m.DripHiveProject })),
-  ),
-  "vexels": lazy(() =>
-    import("./projects/VexelsProject").then((m) => ({ default: m.VexelsProject })),
-  ),
-  "aura-app": lazy(() =>
-    import("./projects/AuraProject").then((m) => ({ default: m.AuraProject })),
-  ),
-  // Add new custom pages here as you build them:
-  // "vitl":     lazy(() => import("../projects/VITLProject").then(m => ({ default: m.VITLProject }))),
+  // Branding
+  "driphive":     lazy(() => import("../projects/DripHiveProject").then(m => ({ default: m.DripHiveProject }))),
+  "vexels":       lazy(() => import("../projects/VexelsProject").then(m => ({ default: m.VexelsProject }))),
+  // UI / Product
+  "aura-app":     lazy(() => import("../projects/AuraProject").then(m => ({ default: m.AuraProject }))),
+  "banana-quest": lazy(() => import("../projects/BananaQuestProject").then(m => ({ default: m.BananaQuestProject }))),
+  // Poster Series
+  "pixel-era":    lazy(() => import("../projects/PixelEraProject").then(m => ({ default: m.PixelEraProject }))),
+  "antaryatra":   lazy(() => import("../projects/AntaryatraProject").then(m => ({ default: m.AntaryatraProject }))),
+  // "vitl":      lazy(() => import("../projects/VITLProject").then(m => ({ default: m.VITLProject }))),
 };
 
 // ─── Loading fallback (minimal, matches dark theme) ───────

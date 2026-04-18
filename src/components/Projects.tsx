@@ -10,6 +10,7 @@ import { projectCards, type ProjectCardData } from "../data/projectCards";
 const ProjectCard = ({
   project,
   index,
+  totalProjects,
   prefersReducedMotion,
 }: {
   project: ProjectCardData;

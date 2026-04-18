@@ -455,7 +455,7 @@ function BackHeader({ label, title, onBack, right = "···" }: {
 
 // ─── SECTION LABEL ───────────────────────────────────────────────────────────
 
-function SLabel({ children }: { children: string }) {
+function SLabel({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ fontSize: 9, letterSpacing: "0.32em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", marginTop: 20, marginBottom: 10 }}>
       {children}

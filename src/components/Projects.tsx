@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 
-interface Project {
+interface ProjectCardData {
   id: string;
   title: string;
   category: string;
@@ -13,36 +13,40 @@ interface Project {
   tag: string; // short mono tag shown on card
 }
 
-// const projects: Project[] = [
-//   {
-//     id: "driphive",
-//     title: "Driphive",
-//     category: "Branding",
-//     image: "/images/projects/driphive/Driphive-cover.webp",
-//     tag: "BRAND",
-//   },
-//   {
-//     id: "vexels",
-//     title: "Vexels",
-//     category: "Branding",
-//     image: "https://picsum.photos/seed/vex/800/600",
-//     tag: "BRAND",
-//   },
-//   {
-//     id: "banana-quest",
-//     title: "Banana Quest",
-//     category: "UI Design",
-//     image: "/images/projects/bquest/cover.webp",
-//     tag: "UI",
-//   },
-//   {
-//     id: "pixel-era",
-//     title: "Pixel Era",
-//     category: "Poster Design",
-//     image: "https://picsum.photos/seed/pixel/800/600",
-//     tag: "PRINT",
-//   },
-// ];
+const customProjectCards: ProjectCardData[] = [
+  {
+    id: "banana-quest",
+    title: "Banana Quest",
+    category: "UI Design",
+    image: "/images/projects/bquest/cover.webp",
+    tag: "UI",
+  },
+  {
+    id: "pixel-era",
+    title: "Pixel Era",
+    category: "Poster Series",
+    image: "/images/projects/pixel/cover.webp",
+    tag: "PRINT",
+  },
+  {
+    id: "antaryatra",
+    title: "Antaryatra",
+    category: "Poster Series",
+    image: "/images/projects/antaryatra/antaryatra.webp",
+    tag: "ART",
+  },
+];
+
+const projectCards: ProjectCardData[] = [
+  ...projects.map((project) => ({
+    id: project.id,
+    title: project.title,
+    category: project.category,
+    image: project.image,
+    tag: project.tag,
+  })),
+  ...customProjectCards,
+];
 
 // ─── Individual Project Card ─────────────────────────────────────────────────
 
@@ -51,8 +55,9 @@ const ProjectCard = ({
   index,
   prefersReducedMotion,
 }: {
-  project: Project;
+  project: ProjectCardData;
   index: number;
+  totalProjects: number;
   prefersReducedMotion: boolean | null;
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -191,7 +196,7 @@ const ProjectCard = ({
             className="absolute bottom-4 right-4 font-mono text-[9px]
               tracking-widest text-white/70 z-10"
           >
-            {String(project.id).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            {String(index + 1).padStart(2, "0")} / {String(totalProjects).padStart(2, "0")}
           </motion.span>
         </div>
 
@@ -248,6 +253,7 @@ export const Projects = ({
   showExploreButton?: boolean;
 }) => {
   const prefersReducedMotion = useReducedMotion();
+  const totalProjects = projectCards.length;
 
   return (
     <section
@@ -333,10 +339,10 @@ export const Projects = ({
           so it never looks abandoned.
         */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
-          {projects.map((project, i) => {
+          {projectCards.map((project, i) => {
             // On large screens, last card (index 3 of 4) gets col-span-2
             // to prevent orphan. Only when total is 4 (adjust if you add more).
-            const isOrphan = projects.length === 4 && i === 3;
+            const isOrphan = projectCards.length === 4 && i === 3;
 
             return (
               <div
@@ -346,6 +352,7 @@ export const Projects = ({
                 <ProjectCard
                   project={project}
                   index={i}
+                  totalProjects={totalProjects}
                   prefersReducedMotion={prefersReducedMotion}
                 />
               </div>

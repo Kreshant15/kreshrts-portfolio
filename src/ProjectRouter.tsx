@@ -2,19 +2,19 @@
 
 import React, { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { ProjectDetailPage } from "../pages/ProjectDetailPage";
+import { ProjectDetailPage } from "./pages/ProjectDetailPage";
 
 const customProjectPages: Record<string, React.LazyExoticComponent<() => React.JSX.Element>> = {
   // Branding
-  "driphive":     lazy(() => import("../projects/DripHiveProject").then(m => ({ default: m.DripHiveProject }))),
-  "vexels":       lazy(() => import("../projects/VexelsProject").then(m => ({ default: m.VexelsProject }))),
+  "driphive":     lazy(() => import("./projects/DripHiveProject").then(m => ({ default: m.DripHiveProject }))),
+  "vexels":       lazy(() => import("./projects/VexelsProject").then(m => ({ default: m.VexelsProject }))),
   // UI / Product
-  "aura-app":     lazy(() => import("../projects/AuraProject").then(m => ({ default: m.AuraProject }))),
-  "banana-quest": lazy(() => import("../projects/BananaQuestProject").then(m => ({ default: m.BananaQuestProject }))),
+  "aura-app":     lazy(() => import("./projects/AuraProject").then(m => ({ default: m.AuraProject }))),
+  "banana-quest": lazy(() => import("./projects/BananaQuestProject").then(m => ({ default: m.BananaQuestProject }))),
   // Poster Series
-  "pixel-era":    lazy(() => import("../projects/PixelEraProject").then(m => ({ default: m.PixelEraProject }))),
-  "antaryatra":   lazy(() => import("../projects/AntaryatraProject").then(m => ({ default: m.AntaryatraProject }))),
-  // "vitl":      lazy(() => import("../projects/VITLProject").then(m => ({ default: m.VITLProject }))),
+  "pixel-era":    lazy(() => import("./projects/PixelEraProject").then(m => ({ default: m.PixelEraProject }))),
+  "antaryatra":   lazy(() => import("./projects/AntaryatraProject").then(m => ({ default: m.AntaryatraProject }))),
+  // "vitl":      lazy(() => import("./projects/VITLProject").then(m => ({ default: m.VITLProject }))),
 };
 
 // ─── Loading fallback (minimal, matches dark theme) ───────
